@@ -1,0 +1,91 @@
+NAME
+    Mo::utils::URI - Mo utilities for URI.
+
+SYNOPSIS
+     use Mo::utils::URI qw(check_uri);
+
+     check_uri($self, $key);
+
+DESCRIPTION
+    Mo utilities for URI checking of data objects.
+
+SUBROUTINES
+  "check_uri"
+     check_uri($self, $key);
+
+    Check parameter defined by $key which is valid URI.
+
+    Put error if check isn't ok.
+
+    Returns undef.
+
+ERRORS
+     check_uri(): 
+             Parameter '%s' doesn't contain valid URI.
+                     Value: %s
+
+EXAMPLE1
+     use strict;
+     use warnings;
+
+     use Mo::utils::URI qw(check_uri);
+
+     my $self = {
+             'key' => 'https://skim.cz',
+     };
+     check_uri($self, 'key');
+
+     # Print out.
+     print "ok\n";
+
+     # Output:
+     # ok
+
+EXAMPLE2
+     use strict;
+     use warnings;
+
+     use Error::Pure;
+     use Mo::utils::URI qw(check_uri);
+
+     $Error::Pure::TYPE = 'Error';
+
+     my $self = {
+             'key' => 'bad_uri',
+     };
+     check_uri($self, 'key');
+
+     # Print out.
+     print "ok\n";
+
+     # Output like:
+     # #Error [..utils.pm:?] Parameter 'key' doesn't contain valid URI.
+
+DEPENDENCIES
+    Data::Validate::URI, Error::Pure, Exporter, Readonly.
+
+SEE ALSO
+    Mo  Micro Objects. Mo is less.
+
+    Mo::utils::Language
+        Mo language utilities.
+
+    Wikibase::Datatype::Utils
+        Wikibase datatype utilities.
+
+REPOSITORY
+    <https://github.com/michal-josef-spacek/Mo-utils-URI>
+
+AUTHOR
+    Michal Josef Špaček <mailto:skim@cpan.org>
+
+    <http://skim.cz>
+
+LICENSE AND COPYRIGHT
+    © 2024 Michal Josef Špaček
+
+    BSD 2-Clause License
+
+VERSION
+    0.01
+
