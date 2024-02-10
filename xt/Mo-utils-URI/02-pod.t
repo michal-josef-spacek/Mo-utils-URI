@@ -13,5 +13,5 @@ SKIP: {
 	}
 	require Test::Pod;
 	Test::Pod::pod_file_ok(File::Object->new->up(2)->dir('lib')
-		->dir('mo')->dir('utils')->file('URI.pm')->s);
+		->dir('Mo')->dir('utils')->file('URI.pm')->s);
 };
