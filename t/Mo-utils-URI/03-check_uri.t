@@ -5,12 +5,13 @@ use English;
 use Error::Pure::Utils qw(clean);
 use Mo::utils::URI qw(check_uri);
 use Readonly;
-use Test::More 'tests' => 5;
+use Test::More 'tests' => 6;
 use Test::NoWarnings;
 
 Readonly::Array our @RIGHT_URIS => qw(
 	http://skim.cz
 	https://skim.cz
+	urn:isbn:0451450523
 );
 
 # Test.
