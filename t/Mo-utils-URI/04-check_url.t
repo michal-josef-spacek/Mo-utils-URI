@@ -5,12 +5,13 @@ use English;
 use Error::Pure::Utils qw(clean);
 use Mo::utils::URI qw(check_url);
 use Readonly;
-use Test::More 'tests' => 6;
+use Test::More 'tests' => 7;
 use Test::NoWarnings;
 
 Readonly::Array our @RIGHT_URLS => qw(
 	http://skim.cz
 	https://skim.cz
+	ftp://ftp.example.com/archive.zip
 );
 Readonly::Array our @BAD_URLS => qw(
 	foo
