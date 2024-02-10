@@ -1,7 +1,9 @@
 TODO
 ====
 1. Add check for URN.
-2.
+2. Check for URL or relative path?
+3. Check for URL or relative path and is concrete object (like image)?
+4.
 
 Applied
 =======
