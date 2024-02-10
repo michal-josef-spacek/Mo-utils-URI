@@ -22,6 +22,7 @@ requires 'Data::Validate::URI' => 0;
 requires 'Error::Pure' => 0.15;
 requires 'Exporter' => 0;
 requires 'Readonly' => 0;
+requires 'URI' => 0;
 resources 'bugtracker' => 'https://github.com/michal-josef-spacek/Mo-utils-URI/issues',
 resources 'homepage' => 'https://github.com/michal-josef-spacek/Mo-utils-URI';
 resources 'repository' => 'git://github.com/michal-josef-spacek/Mo-utils-URI';

@@ -2,9 +2,10 @@ NAME
     Mo::utils::URI - Mo utilities for URI.
 
 SYNOPSIS
-     use Mo::utils::URI qw(check_uri);
+     use Mo::utils::URI qw(check_uri check_url);
 
      check_uri($self, $key);
+     check_url($self, $key);
 
 DESCRIPTION
     Mo utilities for URI checking of data objects.
@@ -19,9 +20,22 @@ SUBROUTINES
 
     Returns undef.
 
+  "check_url"
+     check_url($self, $key);
+
+    Check parameter defined by $key which is valid URL.
+
+    Put error if check isn't ok.
+
+    Returns undef.
+
 ERRORS
-     check_uri(): 
+     check_uri():
              Parameter '%s' doesn't contain valid URI.
+                     Value: %s
+
+     check_url():
+             Parameter '%s' doesn't contain valid URL.
                      Value: %s
 
 EXAMPLE1
@@ -61,8 +75,45 @@ EXAMPLE2
      # Output like:
      # #Error [..utils.pm:?] Parameter 'key' doesn't contain valid URI.
 
+EXAMPLE3
+     use strict;
+     use warnings;
+
+     use Mo::utils::URI qw(check_url);
+
+     my $self = {
+             'key' => 'https://skim.cz',
+     };
+     check_url($self, 'key');
+
+     # Print out.
+     print "ok\n";
+
+     # Output:
+     # ok
+
+EXAMPLE4
+     use strict;
+     use warnings;
+
+     use Error::Pure;
+     use Mo::utils::URI qw(check_url);
+
+     $Error::Pure::TYPE = 'Error';
+
+     my $self = {
+             'key' => 'bad_uri',
+     };
+     check_uri($self, 'key');
+
+     # Print out.
+     print "ok\n";
+
+     # Output like:
+     # #Error [..utils.pm:?] Parameter 'key' doesn't contain valid URL.
+
 DEPENDENCIES
-    Data::Validate::URI, Error::Pure, Exporter, Readonly.
+    Data::Validate::URI, Error::Pure, Exporter, Readonly, URI.
 
 SEE ALSO
     Mo  Micro Objects. Mo is less.
