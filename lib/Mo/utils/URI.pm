@@ -9,7 +9,8 @@ use Error::Pure qw(err);
 use Readonly;
 use URI;
 
-Readonly::Array our @EXPORT_OK => qw(check_location check_uri check_url);
+Readonly::Array our @EXPORT_OK => qw(check_location check_uri check_url
+	check_urn);
 
 our $VERSION = 0.01;
 
@@ -70,6 +71,24 @@ sub check_url {
 	return;
 }
 
+sub check_urn {
+	my ($self, $key) = @_;
+
+	if (! exists $self->{$key}) {
+		return;
+	}
+
+	my $value = $self->{$key};
+	my $uri = URI->new($value);
+	if (! $uri->can('nid') || ! $uri->can('nss') || ! $uri->nid || ! $uri->nss) {
+		err "Parameter '".$key."' doesn't contain valid URN.",
+			'Value', $value,
+		;
+	}
+
+	return;
+}
+
 1;
 
 __END__
@@ -89,6 +108,7 @@ Mo::utils::URI - Mo utilities for URI.
  check_location($self, $key);
  check_uri($self, $key);
  check_url($self, $key);
+ check_urn($self, $key);
 
 =head1 DESCRIPTION
 
@@ -127,6 +147,16 @@ Put error if check isn't ok.
 
 Returns undef.
 
+=head2 C<check_urn>
+
+ check_urn($self, $key);
+
+Check parameter defined by C<$key> which is valid URN.
+
+Put error if check isn't ok.
+
+Returns undef.
+
 =head1 ERRORS
 
  check_location():
@@ -139,6 +169,10 @@ Returns undef.
 
  check_url():
          Parameter '%s' doesn't contain valid URL.
+                 Value: %s
+
+ check_urn():
+         Parameter '%s' doesn't contain valid URN.
                  Value: %s
 
 =head1 EXAMPLE1
@@ -269,6 +303,49 @@ Returns undef.
 
  # Output like:
  # #Error [..utils.pm:?] Parameter 'key' doesn't contain valid URL.
+
+=head1 EXAMPLE7
+
+=for comment filename=check_urn_ok.pl
+
+ use strict;
+ use warnings;
+
+ use Mo::utils::URI qw(check_urn);
+
+ my $self = {
+         'key' => 'urn:isbn:0451450523',
+ };
+ check_urn($self, 'key');
+
+ # Print out.
+ print "ok\n";
+
+ # Output:
+ # ok
+
+=head1 EXAMPLE8
+
+=for comment filename=check_urn_fail.pl
+
+ use strict;
+ use warnings;
+
+ use Error::Pure;
+ use Mo::utils::URI qw(check_urn);
+
+ $Error::Pure::TYPE = 'Error';
+
+ my $self = {
+         'key' => 'bad_urn',
+ };
+ check_urn($self, 'key');
+
+ # Print out.
+ print "ok\n";
+
+ # Output like:
+ # #Error [..utils.pm:?] Parameter 'key' doesn't contain valid URN.
 
 =head1 DEPENDENCIES
 

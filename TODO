@@ -1,12 +1,15 @@
 TODO
 ====
-1. Add check for URN.
 3. Check for URL or relative path and is concrete object (like image)?
 4. This URI (http://1.2.333.43) is not valid.
-5.
+5. Add check for URN with valid NID.
+6.
 
 Applied
 =======
 2. Check for URL or relative path?
 check_location()
+OK [20240211] skim
+
+1. Add check for URN.
 OK [20240211] skim
