@@ -1,4 +1,6 @@
 Changes
+examples/check_location_fail.pl
+examples/check_location_ok.pl
 examples/check_uri_fail.pl
 examples/check_uri_ok.pl
 examples/check_url_fail.pl
@@ -22,7 +24,8 @@ META.yml
 README
 t/Mo-utils-URI/01-use.t
 t/Mo-utils-URI/02-version.t
-t/Mo-utils-URI/03-check_uri.t
-t/Mo-utils-URI/04-check_url.t
+t/Mo-utils-URI/03-check_location.t
+t/Mo-utils-URI/04-check_uri.t
+t/Mo-utils-URI/05-check_url.t
 xt/Mo-utils-URI/01-pod_coverage.t
 xt/Mo-utils-URI/02-pod.t
