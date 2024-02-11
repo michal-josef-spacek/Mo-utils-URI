@@ -21,6 +21,9 @@ Readonly::Array our @RIGHT_URIS => qw(
 	urn:isbn:0451450523
 	urn:oasis:names:specification:docbook:dtd:xml:4.1.2
 );
+Readonly::Array our @BAD_URIS => qw(
+	foo
+);
 
 # Test.
 my ($ret, $self);
@@ -38,13 +41,14 @@ $ret = check_uri($self, 'key');
 is($ret, undef, 'Right not exist key.');
 
 # Test.
-$self = {
-	'key' => 'foo',
-};
-eval {
-	check_uri($self, 'key');
-};
-is($EVAL_ERROR, "Parameter 'key' doesn't contain valid URI.\n",
-	"Parameter 'key' doesn't contain valid URI (foo).");
-clean();
-
+foreach my $bad_uri (@BAD_URIS) {
+	$self = {
+		'key' => $bad_uri,
+	};
+	eval {
+		check_uri($self, 'key');
+	};
+	is($EVAL_ERROR, "Parameter 'key' doesn't contain valid URI.\n",
+		"Parameter 'key' doesn't contain valid URI ($bad_uri).");
+	clean();
+}
