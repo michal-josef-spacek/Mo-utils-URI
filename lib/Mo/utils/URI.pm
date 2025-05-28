@@ -72,7 +72,7 @@ sub check_urn {
 
 	my $value = $self->{$key};
 	my $uri = URI->new($value);
-	if (! $uri->can('nid') || ! $uri->can('nss') || ! $uri->nid || ! $uri->nss) {
+	if (! $uri->can('nid') || ! $uri->nid || ! $uri->nss) {
 		err "Parameter '".$key."' doesn't contain valid URN.",
 			'Value', $value,
 		;
