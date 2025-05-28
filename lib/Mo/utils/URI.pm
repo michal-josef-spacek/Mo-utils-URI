@@ -17,9 +17,7 @@ our $VERSION = 0.03;
 sub check_location {
 	my ($self, $key) = @_;
 
-	if (! exists $self->{$key}) {
-		return;
-	}
+	_check_key($self, $key) && return;
 
 	my $value = $self->{$key};
 	my $uri = URI->new($value);
@@ -39,9 +37,7 @@ sub check_location {
 sub check_uri {
 	my ($self, $key) = @_;
 
-	if (! exists $self->{$key}) {
-		return;
-	}
+	_check_key($self, $key) && return;
 
 	my $value = $self->{$key};
 	if (! is_uri($value)) {
@@ -56,9 +52,7 @@ sub check_uri {
 sub check_url {
 	my ($self, $key) = @_;
 
-	if (! exists $self->{$key}) {
-		return;
-	}
+	_check_key($self, $key) && return;
 
 	my $value = $self->{$key};
 	my $uri = URI->new($value);
@@ -74,9 +68,7 @@ sub check_url {
 sub check_urn {
 	my ($self, $key) = @_;
 
-	if (! exists $self->{$key}) {
-		return;
-	}
+	_check_key($self, $key) && return;
 
 	my $value = $self->{$key};
 	my $uri = URI->new($value);
@@ -87,6 +79,16 @@ sub check_urn {
 	}
 
 	return;
+}
+
+sub _check_key {
+	my ($self, $key) = @_;
+
+	if (! exists $self->{$key} || ! defined $self->{$key}) {
+		return 1;
+	}
+
+	return 0;
 }
 
 1;
