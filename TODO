@@ -5,7 +5,8 @@ TODO
 Add Data::Validate::IP check.
 5. Add check for URN with valid NID.
 6. Check location suffix defined by list of suffixes?
-7.
+7. Tests.
+8.
 
 Applied
 =======
