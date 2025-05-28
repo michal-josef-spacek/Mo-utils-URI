@@ -1,4 +1,5 @@
 0.04
+ - Improve doc.
 
 0.03 2025-05-28T16:03:00+02:00
  - API change: The undef value is possible for all checks.

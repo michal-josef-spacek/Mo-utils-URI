@@ -122,8 +122,10 @@ Mo utilities for URI checking of data objects.
 
  check_location($self, $key);
 
+I<Since version 0.01. Described functionality since version 0.03.>
+
 Check parameter defined by C<$key> which is valid location. Could be URL or
-absolute or relative path.
+absolute or relative path. Value is valid if it is undefined or key doesn't exist.
 
 Put error if check isn't ok.
 
@@ -133,7 +135,10 @@ Returns undef.
 
  check_uri($self, $key);
 
+I<Since version 0.01. Described functionality since version 0.03.>
+
 Check parameter defined by C<$key> which is valid URI.
+Value is valid if it is undefined or key doesn't exist.
 
 Put error if check isn't ok.
 
@@ -143,7 +148,10 @@ Returns undef.
 
  check_url($self, $key);
 
+I<Since version 0.01. Described functionality since version 0.03.>
+
 Check parameter defined by C<$key> which is valid URL.
+Value is valid if it is undefined or key doesn't exist.
 
 Put error if check isn't ok.
 
@@ -153,7 +161,10 @@ Returns undef.
 
  check_urn($self, $key);
 
+I<Since version 0.01. Described functionality since version 0.03.>
+
 Check parameter defined by C<$key> which is valid URN.
+Value is valid if it is undefined or key doesn't exist.
 
 Put error if check isn't ok.
 
